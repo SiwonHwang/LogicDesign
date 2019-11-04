@@ -112,7 +112,7 @@ module fnd_dec(  o_seg,
   		4'b1010 : o_seg = 7'd0 ;
   		4'b1011 : o_seg = 7'd0 ;
   		4'b1100 : o_seg = 7'd0 ;
-  		4'b1101 : o_seg = 7'd0;
+  		4'b1101 : o_seg = 7'd0 ;
   		4'b1110 : o_seg = 7'd0 ;
   		4'b1111 : o_seg = 7'd0 ;
  		endcase
@@ -214,19 +214,19 @@ module top_nco_cnt_disp(
     			clk,
     			rst_n);
 
-	output [5:0] o_seg_enb     ;
-	output       o_seg_dp      ;
-	output [6:0] o_seg         ;
+	output [5:0]  o_seg_enb     ;
+	output        o_seg_dp      ;
+	output [6:0]  o_seg         ;
 
-	input        clk           ;
-	input        rst_n         ;
+	input         clk           ;
+	input         rst_n         ;
 
-	wire   [5:0] wire_nc       ;
-	wire   [3:0] wire_left     ;
-	wire   [3:0] wire_right    ;
-	wire  [41:0] six_digit_seg ;
-	wire   [6:0] seg_left      ;
-	wire   [6:0] seg_right     ;
+	wire   [5:0]  wire_nc       ;
+	wire   [3:0]  wire_left     ;
+	wire   [3:0]  wire_right    ;
+	wire  [41:0]  six_digit_seg ;
+	wire   [6:0]  seg_left      ;
+	wire   [6:0]  seg_right     ;
 
 
 	assign  six_digit_seg = { {4{7'b0000000}}, seg_left, seg_right };
