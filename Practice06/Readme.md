@@ -30,5 +30,5 @@ assign six_digit_seg = { seg_left, seg_right, seg_left, seg_right, seg_left, seg
 ![](https://github.com/SiwonHwang/LogicDesign/blob/master/Practice06/pic/KakaoTalk_20191104_184215284_07.jpg)
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzU4MDIyNDMxXX0=
+eyJoaXN0b3J5IjpbNjE1MTM2NDQwLDc1ODAyMjQzMV19
 -->
