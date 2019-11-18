@@ -538,13 +538,13 @@ input		i_buzz_en	;
 input		clk		;
 input		rst_n		;
 
-parameter	C = 23889.10867	;
-parameter	D = 21282.77228	;
-parameter	E = 18960.79666 ;
-parameter	F = 17896.60487	;
-parameter	G = 15944.06058	;
-parameter	A = 14204.54545	;
-parameter	B = 12654.81265	;
+parameter	C = 191113	;
+parameter	D = 170262	;
+parameter	E = 151686	;
+parameter	F = 143173	;
+parameter	G = 63776	;
+parameter	A = 56818	;
+parameter	B = 50619	;
 
 wire		clk_bit		;
 nco	u_nco_bit(	
