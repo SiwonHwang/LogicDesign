@@ -24,9 +24,9 @@
     reg [1:0] seq_rx ; 
     always @(posedge clk_1M or negedge rst_n) begin 
 	    if(rst_n == 1'b0) begin 
-		    seq_rx <= 2'b00;
+		    seq_rx <= 2'b00; // reset 하면 초기화
 	    end else begin 
-		    seq_rx <= {seq_rx[0], ir_rx}; 
+		    seq_rx <= {seq_rx[0], ir_rx}; // seq_rx[0]에 리모컨에서 온 신호 저장
 		    end 
 	 end 
 	 
@@ -69,25 +69,29 @@
 				if (cnt_h >= 8500 && cnt_l >= 4000) begin //high가 8.5ms 이상 그리고 low가 4ms 이상일 경우 datacode 시작
 					state <= DATACODE;
 				end else begin
-					state <= LEADCODE; //아닐경우 계속 leadcode
+					state <= LEADCODE; //아닐 경우 계속 leadcode 유지
 				end
 			end
 			DATACODE: begin
-				if (seq_rx == 2'b01) begin // rising edge마다 증가
+				if (seq_rx == 2'b01) begin // rising edge 마다 증가
 					cnt32 <= cnt32 + 1;
 				end else begin
 					cnt32 <= cnt32; // rising edge 없을땐 유지
 				end
 				if (cnt32 >= 6'd32 && cnt_l >= 1000) begin
-					state <= COMPLETE; // rising edge가 32번이 되고(custom code 16bit, data code 16bit 총 32), low가 1ms 이상일 경우 comlete -> o_data에 data
+					state <= COMPLETE; // rising edge가 32번이 되고(custom code 16bit, data code 16bit 총 32), low가 1ms 이상일 경우 complete -> o_data에 data
 				end else begin
 					state <= DATACODE; // 아닐 경우 유지
 				end
 			end
-			COMPLETE: state <= IDLE; //complet 후 다시 idle
+			COMPLETE: state <= IDLE; //complete 후 다시 idle
 		endcase
 	end
 	end
+	
+
+### 정리
+#### 처음 high가 9ms(코드에선 8.5ms), low 4.5ms(코드에선 4ms)의 leader code가 끝나면 특정회사를 나타내는 custom code 16bit와 리모콘의 송신 데이터인 data code 16bit (실제 data 8bit, 데이터 확인 위한 보수 신호 8bit)가 들어온다. 이는 cnt32가 총 32bit(rising edge 32개)를 확인하고, 32bit가 확인되면 complete가 되고, 저장된 data가 o_data로 나타난다. complete 후엔 다시 초기화된다.
 
 
 <!--stackedit_data:
