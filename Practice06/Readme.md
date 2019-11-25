@@ -1,7 +1,7 @@
 
-# Lab 06
-## 실습 내용
-### **7 – Segment Display Decoder (개별)**
+# Practice09
+##  동작원리
+### 7 – Segment Display Decoder (개별)
 #### **Submodule 1** : 0~9의 값을 갖는 4bit 입력 신호를 받아 7bit FND  segment  값 출력
 #### **Submodule 2** : 0~59의 값을 갖는 6bit 입력 신호를 받아 십의 자리 수와 일의 자리 수를 각각 4bit으로 출력
 #### **Top Module** : 저번 시간에 만든 second counter  및 Submodule 1/2를 이용하여 실습 장비의 LED에 맞는 Display Module 설계
@@ -30,5 +30,6 @@ assign six_digit_seg = { seg_left, seg_right, seg_left, seg_right, seg_left, seg
 ![](https://github.com/SiwonHwang/LogicDesign/blob/master/Practice06/pic/KakaoTalk_20191104_184215284_07.jpg)
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjE1MTM2NDQwLDc1ODAyMjQzMV19
+eyJoaXN0b3J5IjpbLTQ2MjM3Njg0NSw2MTUxMzY0NDAsNzU4MD
+IyNDMxXX0=
 -->
